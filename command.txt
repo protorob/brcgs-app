@@ -1,0 +1,1 @@
+flask create_user --username user1 --email user1@email.com --password user12345

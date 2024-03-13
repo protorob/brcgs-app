@@ -1,0 +1,23 @@
+<ul>
+    {% if not current_user.is_authenticated %}
+    <li><a href="{{ url_for('auth_bp.login') }}" class="secondary">Login</a></li>
+    {% else %}
+    <li>
+        <details class="dropdown">
+            <summary>
+                Menu
+            </summary>
+            <ul dir="rtl">
+                {% if current_user.is_admin %}
+                <li><a aria-current="page" class="contrast" href="{{ url_for('admin_bp.usermanager') }}">User</a></li>
+                {% else %}
+                <li><a aria-current="page" class="contrast" href="{{ url_for('inprocess_bp.inprocess') }}">In Process</a></li>
+                <li><a aria-current="page" class="contrast" href="{{ url_for('reception_bp.reception') }}">Receipts</a></li>
+                <li><a aria-current="page" class="contrast" href="{{ url_for('fulfillment_bp.fulfillment') }}">Fulfillment</a></li>
+                {% endif %}
+                <li><a aria-current="page" class="contrast" href="{{ url_for('auth_bp.logout') }}">Logout</a></li>
+            </ul>
+        </details>
+    </li>
+    {% endif %}
+</ul>

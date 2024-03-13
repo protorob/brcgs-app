@@ -7,6 +7,7 @@
     <meta name="color-scheme" content="light dark" />
     <script src="{{ url_for('static', filename='js/sorttable.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.jade.css') }}">
+    <script src="{{ url_for('static', filename='js/sweetalert2@11.js') }}"></script>
     <title>SOB Olearia - {% block title %}{% endblock title %}</title>
 </head>
 
@@ -14,9 +15,9 @@
     <header class="container">
         <nav>
             <ul>
-                <li><a href="{{ url_for('main.index') }}"><strong>SOB Olearia s.r.l.</strong></a></li>
+                <li><a href="{{ url_for('auth_bp.login') }}"><strong>SOB Olearia s.r.l.</strong></a></li>
             </ul>
-            {% include( "_navigation.html" ) %}
+            {% include( "includes/_navigation.html" ) %}
         </nav>
     </header>
     <main class="container">
@@ -29,6 +30,8 @@
         <p>SOB Olearia srl - Contrada Martinazzo, snc - 90032 Bisacquino (PA) - Sicilia - ITALIA</p>
         {% endblock footer %}
     </footer>
+
+    {% include 'includes/messages.html' %}
 </body>
 
 </html>
