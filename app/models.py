@@ -148,9 +148,39 @@ class ReceptionRecord(db.Model):
         return f'<transport document number: {self.transport_document_number}\
         from {self.reception_date} added by user id: {self.user_id}'
 
-# class FulfillmentRecord(db.Model):
 
-#     __tablename__ = 'fulfillment_records'
+# Define the Fulfillment model
+class FulfillmentRecords(db.Model):
 
-#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    __tablename__ = 'fulfillment_records'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    fulfillment_date = db.Column(db.Date, nullable=False)
+    fulfillment_doc_number = db.Column(db.String(120), nullable=False)
+    fulfillment_lot = db.Column(db.String(120), nullable=False)
+    fulfillment_transporter = db.Column(db.String(120), nullable=False)
+    transporter_plate_number = db.Column(db.String(120), nullable=False)
+    fullfilled_product_quantity = db.Column(db.Integer)
+    higienic_condition_check = db.Column(db.String(50), nullable=False, default="Compliant")
+    product_integrity_check = db.Column(db.String(50), nullable=False, default="Compliant")
+    operation_result_check = db.Column(db.String(50), nullable=False, default="Compliant")
+
+    def __init__(self, user_id, fulfillment_doc_number, fulfillment_lot,
+        fulfillment_transporter, transporter_plate_number, fullfilled_product_quantity,
+        higienic_condition_check, product_integrity_check, operation_result_check, fulfillment_date=None ):
+        
+        self.user_id = user_id
+        self.fulfillment_date = fulfillment_date if fulfillment_date else datetime.utcnow()
+        self.fulfillment_doc_number = fulfillment_doc_number
+        self.fulfillment_lot = fulfillment_lot
+        self.fulfillment_transporter = fulfillment_transporter
+        self.transporter_plate_number = transporter_plate_number
+        self.fullfilled_product_quantity = fullfilled_product_quantity
+        self.higienic_condition_check = higienic_condition_check
+        self.product_integrity_check = product_integrity_check
+        self.operation_result_check = operation_result_check
+
+    def __repr__(self):
+        return f'<transport document number: {self.fulfillment_doc_number}\
+        from {self.fulfillment_date} added by user id: {self.user_id}'
