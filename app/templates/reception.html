@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% block title %}Incomming Supplies Checks{% endblock title %}
+{% block content %}
+<section>
+    <h2>Incomming Supplies Checks</h2>
+    <details>
+        <summary role="button" class="outline">New "Reception Check"</summary>
+        <form method="post">
+            <fieldset>
+                <div>
+                    <label for="reception_date">Date:</label>
+                    <input type="date" name="reception_date"><br>
+                </div>
+                <div>
+                    <label for="transport_document_number">Transport Document N°:</label>
+                    <input type="text" name="transport_document_number"><br>
+                </div>
+                <div>
+                    <label for="transport_document_date">Transport Document Date:</label>
+                    <input type="date" name="transport_document_date"><br>
+                </div>
+                <div>
+                    <label for="supplier_name">Supplier:</label>
+                    <input type="text" name="supplier_name"><br>
+                </div>
+                <div>
+                    <label for="received_products">Product:</label>
+                    <input type="text" name="received_products"><br>
+                </div>
+            </fieldset>
+            <h3>Verify the correspondence of the accompanying document, Quantity and Lot Number</h3>
+            <hr>
+            <fieldset>
+                <div class="grid">
+                    <div>
+                        <label for="correspondence_verification_compliant">Compliant</label>
+                        <input type="radio" id="correspondence_verification_compliant" name="correspondence_verification" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="correspondence_verification_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="correspondence_verification_non_compliant" name="correspondence_verification" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <h3>Were the goods transported in hygienically suitable cargo compartments approved for the transport of foodstuffs?</h3>
+            <hr>
+            <fieldset>
+                <div class="grid">
+                    <div>
+                        <label for="hygienic_transport_compliant">Compliant</label>
+                        <input type="radio" id="hygienic_transport_compliant" name="hygienic_transport" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="hygienic_transport_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="hygienic_transport_non_compliant" name="hygienic_transport" value="Non-Compliant" />
+                    </div>
+                </div>
+                <br>
+                <p><strong>Check if it's a Supply of Olive Oil</strong></p>
+                <hr>
+                <input type="checkbox" id="is_oliveoil" name="is_oliveoil" value="is_oliveoil" /> Check if it's Olive Oil
+                <hr>
+                <p><strong>In case of receiving Extra Virgin Olive Oil, acquire certificate of washing; verify seal integrity; indicate seal no.; verify filter integrity when loading silos.</strong></p>
+                <div>
+                    <label for="seal_number">Add Seal Number bellow:</label>
+                    <input type="text" id="seal_number" name="seal_number" placeholder="Indicate Seal Number" />
+                </div>
+                <br>
+                <p><strong>Integrity and airtightness of packages and packaging</strong></p>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="pack_integrity_compliant">Compliant</label>
+                        <input type="radio" id="pack_integrity_compliant" name="pack_integrity" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="pack_integrity_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="pack_integrity_non_compliant" name="pack_integrity" value="Non-Compliant" />
+                    </div>
+                </div>
+                <br>
+                <p><strong>Check the products for visually detectable changes in organoleptic, physical and microbiological characteristics:</strong></p>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="product_characteristics_compliant">Compliant</label>
+                        <input type="radio" id="product_characteristics_compliant" name="product_characteristics" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="product_characteristics_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="product_characteristics_non_compliant" name="product_characteristics" value="Non-Compliant" />
+                    </div>
+                </div>
+                <br>
+                <p><strong>Check expiration date and/or TMC and labeling:</strong></p>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="bestbefore_label_compliant">Compliant</label>
+                        <input type="radio" id="bestbefore_label_compliant" name="bestbefore_label" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="bestbefore_label_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="bestbefore_label_non_compliant" name="bestbefore_label" value="Non-Compliant" />
+                    </div>
+                </div>
+                <br>
+                <p><strong>MOCA - Verify: compliance of graphic content, cleanliness and integrity, cleanliness of the means by which they were delivered:</strong></p>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="moka_verification_compliant">Compliant</label>
+                        <input type="radio" id="moka_verification_compliant" name="moka_verification" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="moka_verification_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="moka_verification_non_compliant" name="moka_verification" value="Non-Compliant" />
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <p><strong>Price/Quantity accepted:</strong></p>
+                    <hr>
+                    <input type="radio" name="price_quantity_accepted" value="Yes">Yes
+                    <input type="radio" name="price_quantity_accepted" value="No">No
+                </div>
+                <br>
+                <div>
+                    <label><strong>If not, how many items were rejected?</strong></label>
+                    <hr>
+                    <input type="number" name="items_rejected"><br>
+                </div>
+            </fieldset>
+            <input type="submit" value="Confirm data inmision">
+        </form>
+    </details>
+</section>
+<h2>Latest 25 Rows of Data</h2>
+<p>If you need to see all movements, use the button to dump all the data in a CSV File</p>
+<section>
+    <div class="overflow-auto">
+        <table class="sortable striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Supplier</th>
+                    <th>Trasport Doc. N°</th>
+                    <th>Product</th>
+                    <th>Received by</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>25/01/2023</td>
+                    <td>FaPim sas</td>
+                    <td>TP/05328-Y</td>
+                    <td>Tappi in alluminio verdi e rossi</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>25/02/2023</td>
+                    <td>FaPim sas</td>
+                    <td>TP/05328-Y</td>
+                    <td>Tappi in alluminio verdi e rossi</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>25/03/2023</td>
+                    <td>FaPim sas</td>
+                    <td>TP/05328-Y</td>
+                    <td>Tappi in alluminio verdi e rossi</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>25/05/2023</td>
+                    <td>FaPim sas</td>
+                    <td>TP/05328-Y</td>
+                    <td>Tappi in alluminio verdi e rossi</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#" role="button">Download All Data (CSV)</a>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <script src="{{ url_for('static', filename='js/sorttable.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.jade.css') }}">
+    <title>SOB Olearia - {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}"><strong>SOB Olearia s.r.l.</strong></a></li>
+            </ul>
+            {% include( "_navigation.html" ) %}
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+        <p>No messages.</p>
+        {% endblock content %}
+    </main>
+    <footer class="container">
+        {% block footer %}
+        <p>SOB Olearia srl - Contrada Martinazzo, snc - 90032 Bisacquino (PA) - Sicilia - ITALIA</p>
+        {% endblock footer %}
+    </footer>
+</body>
+
+</html>

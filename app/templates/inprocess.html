@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% block title %}In Process Checks{% endblock title %}
+{% block content %}
+<section>
+    <h2>In Process Checks</h2>
+    <details>
+        <summary role="button" class="outline">New "In Process Check"</summary>
+        <form method="post">
+            <fieldset>
+                <div>
+                    <label for="process_date">Date:</label>
+                    <input type="date" name="process_date" required>
+                </div>
+                <div>
+                    <label for="product_lot_number">Lot Number:</label>
+                    <input type="text" name="product_lot_number" placeholder="Lot Number" required>
+                </div>
+                <div>
+                    <label for="best_before_date">"Best before" date:</label>
+                    <input type="date" name="best_before_date" placeholder="Best Before Date" required>
+                </div>
+                <div>
+                    <label for="product_sku">Product SKU:</label>
+                    <input type="text" name="product_sku" placeholder="Article SKU" required>
+                </div>
+            </fieldset>
+            <h3>Pre Production Checks:</h3>
+            <fieldset>
+                <legend>
+                    <strong>Filter integrity:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="filter_check_compliant">Compliant</label>
+                        <input type="radio" id="filter_check_compliant" name="filter_integrity_check" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="filter_check_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="filter_check_non_compliant" name="filter_integrity_check" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>Line sanification:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="sanification_check_compliant">Compliant</label>
+                        <input type="radio" id="sanification_check_compliant" name="sanification_check" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="sanification_check_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="sanification_check_non_compliant" name="sanification_check" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend><strong>Packaging control:</strong></legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="general_packaging_control">General bottle and container packaging control.</label>
+                        <input type="checkbox" name="general_packaging_control" value="Checked" checked />
+                    </div>
+                    <div>
+                        <label for="bottle_integrity_control">Bottle integrity check</label>
+                        <input type="checkbox" name="bottle_integrity_control" value="Checked" checked />
+                    </div>
+                    <div>
+                        <label for="visual_olfatory_control">Visual (absence of foreign bodies) and olfactory control</label>
+                        <input type="checkbox" name="visual_olfatory_control" value="Checked" checked />
+                    </div>
+                    <div>
+                        <label for="graphics_control">Graphic control of Cans</label>
+                        <input type="checkbox" name="graphics_control" value="Checked" checked />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>Lot Number Check:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="lot_number_compliant">Compliant</label>
+                        <input type="radio" id="lot_number_compliant" name="lot_number" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="lot_number_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="lot_number_non_compliant" name="lot_number" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <h3>Blowing pressure control (CCP):</h3>
+            <hr>
+            <fieldset>
+                <legend>
+                    <strong>Start presure check:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="start_presure_time">Start measurement time:</label>
+                        <input type="time" id="start_presure_time" name="start_presure_time" />
+                    </div>
+                    <div>
+                        <label for="start_presure_value">Start measurement value:</label>
+                        <input type="number" id="start_presure_value" name="start_presure_value" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>First presure check:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="first_presure_time">First measurement time:</label>
+                        <input type="time" id="first_presure_time" name="first_presure_time" />
+                    </div>
+                    <div>
+                        <label for="first_presure_value">First measurement value:</label>
+                        <input type="number" id="first_presure_value" name="first_presure_value" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>Second presure check:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="second_presure_time">Second measurement time:</label>
+                        <input type="time" id="second_presure_time" name="second_presure_time" />
+                    </div>
+                    <div>
+                        <label for="second_presure_value">Second measurement value:</label>
+                        <input type="number" id="second_presure_value" name="second_presure_value" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>Final presure check:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="final_presure_time">Final measurement time:</label>
+                        <input type="time" id="final_presure_time" name="final_presure_time" />
+                    </div>
+                    <div>
+                        <label for="final_presure_value">Final measurement value:</label>
+                        <input type="number" id="final_presure_value" name="start_presure_value" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>Labeling compliance and lot legibility:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="label_compliance_compliant">Compliant</label>
+                        <input type="radio" id="label_compliance_compliant" name="label_compliance" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="label_compliance_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="label_compliance_non_compliant" name="label_compliance" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <h3>Compliance of filling and capping:</h3>
+            <hr>
+            <fieldset>
+                <legend>
+                    <strong>Start filling and capping:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="strat_filling_cap_compliant">Compliant</label>
+                        <input type="radio" id="strat_filling_cap_compliant" name="strat_filling_cap" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="strat_filling_cap_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="strat_filling_cap_non_compliant" name="strat_filling_cap" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <strong>Final filling and capping:</strong>
+                </legend>
+                <hr>
+                <div class="grid">
+                    <div>
+                        <label for="final_filling_cap_compliant">Compliant</label>
+                        <input type="radio" id="final_filling_cap_compliant" name="final_filling_cap" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="final_filling_cap_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="final_filling_cap_non_compliant" name="final_filling_cap" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <h3>Bottle breakage:</h3>
+            <hr>
+            <fieldset>
+                <div class="grid">
+                    <div>
+                        <label for="bottle_breakage_yes">Yes</label>
+                        <input type="radio" id="bottle_breakage_yes" name="bottle_breakage" value="Yes" checked />
+                    </div>
+                    <div>
+                        <label for="bottle_breakage_no">No</label>
+                        <input type="radio" id="bottle_breakage_no" name="bottle_breakage" value="No" checked />
+                    </div>
+                </div>
+                <p>If there were broken bottles, please specify the quantity in the field bellow:</p>
+                <input type="number" id="bottle_breakage_qt" name="bottle_breakage_qt">
+            </fieldset>
+            <h3>Number of units produced:</h3>
+            <hr>
+            <input type="number" id="units_produced_qt" name="units_produced_qt">
+            <input type="submit" value="Confirm data inmision">
+        </form>
+    </details>
+</section>
+<h2>Latest 25 Rows of Data</h2>
+<p>If you need to see all movements, use the button to dump all the data in a CSV File</p>
+<section>
+    <div class="overflow-auto">
+        <table class="sortable striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Product SKU</th>
+                    <th>Lot Number</th>
+                    <th>Order Qt.</th>
+                    <th>Operator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>25/01/2023</td>
+                    <td>010</td>
+                    <td>MOC569848</td>
+                    <td>58</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>25/01/2023</td>
+                    <td>010</td>
+                    <td>MOC569848</td>
+                    <td>58</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>25/01/2023</td>
+                    <td>010</td>
+                    <td>MOC569848</td>
+                    <td>58</td>
+                    <td>Antonio di Giorgio</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>25/01/2023</td>
+                    <td>010</td>
+                    <td>MOC569848</td>
+                    <td>58</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#" role="button">Download All Data (CSV)</a>
+    </div>
+</section>
+{% endblock content %}

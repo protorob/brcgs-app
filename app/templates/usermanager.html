@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}User Manager{% endblock title %}
+{% block content %}
+<section>
+    <h2>Users Management</h2>
+    <details>
+        <summary role="button" class="outline">Add New User</summary>
+        <form method="post">
+            <input type="text" name="full_name" placeholder="Name" required>
+            <br>
+            <input type="email" name="email" placeholder="email" required>
+            <br>
+            <input type="password" name="password" placeholder="Password" required>
+            <br>
+            <input type="password" name="password_confirm" placeholder="Repeat password" required>
+            <br>
+            <div class="container">
+                <input type="checkbox" id="admin" name="admin" value="admin" />
+                <label for="admin">Administrator</label>
+            </div>
+            <input type="submit" value="Add New User">
+        </form>
+    </details>
+</section>
+<section>
+    <div class="overflow-auto">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>E-Mail</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Roberto</td>
+                    <td>info@robertobriceno.eu</td>
+                    <td>
+                        <button>Edit</button>
+                        <button class="secondary" disabled>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Antonio</td>
+                    <td>antonio@cordileone.it</td>
+                    <td>
+                        <button>Edit</button>
+                        <button class="secondary" disabled>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Daniele</td>
+                    <td>danielepoddo@gmail.com</td>
+                    <td>
+                        <button>Edit</button>
+                        <button class="secondary">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock content %}
