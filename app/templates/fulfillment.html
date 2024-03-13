@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}Fulfillment Checks{% endblock title %}
+{% block content %}
+<section>
+    <h2>Fulfillment Checks</h2>
+    <details>
+        <summary role="button" class="outline">New "Fulfillment Check"</summary>
+        <form method="post">
+            <fieldset>
+                <div>
+                    <label for="fulfillment_date">Date:</label>
+                    <input type="date" name="fulfillment_date" required>
+                </div>
+                <div>
+                    <label for="fulfillment_doc_number">Fulfillment DOC Number:</label>
+                    <input type="text" name="fulfillment_doc_number" placeholder="DDT Number" required>
+                </div>
+                <div>
+                    <label for="fulfillment_lot">Lot N°:</label>
+                    <input type="text" name="fulfillment_lot" placeholder="Article SKU" required>
+                </div>
+                <div>
+                    <label for="fulfillment_transporter">Transporter Name:</label>
+                    <input type="text" name="fulfillment_transporter" placeholder="Article SKU" required>
+                </div>
+                <div>
+                    <label for="transporter_plate_number">Vehicel plate N°:</label>
+                    <input type="text" name="transporter_plate_number" placeholder="Article SKU" required>
+                </div>
+                <div>
+                    <label for="fullfilled_product_quantity">Start measurement value:</label>
+                    <input type="number" name="fullfilled_product_quantity" />
+                </div>
+            </fieldset>
+            <h3>Hygienic conditions of loading:</h3>
+            <hr>
+            <fieldset>
+                <div class="grid">
+                    <div>
+                        <label for="higienic_conditions_compliant">Compliant</label>
+                        <input type="radio" id="higienic_conditions_compliant" name="higienic_condition_check" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="higienic_conditions_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="higienic_conditions_non_compliant" name="higienic_condition_check" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <h3>Product integrity:</h3>
+            <hr>
+            <fieldset>
+                <div class="grid">
+                    <div>
+                        <label for="product_integrity_compliant">Compliant</label>
+                        <input type="radio" id="product_integrity_compliant" name="product_integrity_check" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="product_integrity_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="product_integrity_non_compliant" name="product_integrity_check" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <h3>Result of loading operations:</h3>
+            <hr>
+            <fieldset>
+                <div class="grid">
+                    <div>
+                        <label for="operation_result_compliant">Compliant</label>
+                        <input type="radio" id="operation_result_compliant" name="operation_result_check" value="Compliant" checked />
+                    </div>
+                    <div>
+                        <label for="operation_result_non_compliant">Non-Compliant</label>
+                        <input type="radio" id="operation_result_non_compliant" name="operation_result_check" value="Non-Compliant" />
+                    </div>
+                </div>
+            </fieldset>
+            <input type="submit" value="Confirm data inmision">
+        </form>
+    </details>
+</section>
+<h2>Latest 25 Rows of Data</h2>
+<p>If you need to see all movements, use the button to dump all the data in a CSV File</p>
+<section>
+    <div class="overflow-auto">
+        <table class="sortable striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Document N°</th>
+                    <th>Lot N°</th>
+                    <th>Transporter</th>
+                    <th>Operator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>25/01/2023</td>
+                    <td>6595/565</td>
+                    <td>MOC569848</td>
+                    <td>Camarda Trasporti</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>25/01/2023</td>
+                    <td>6595/565</td>
+                    <td>MOC56KHJSF9848</td>
+                    <td>Camarda Trasporti</td>
+                    <td>Giovanni Marsolo</td>
+                </tr>
+                <tr>
+                    <td>25/01/2023</td>
+                    <td>6595/565</td>
+                    <td>ABCC569848</td>
+                    <td>DHL</td>
+                    <td>Antonio di Giorgio</td>
+                </tr>
+
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#" role="button">Download All Data (CSV)</a>
+    </div>
+</section>
+{% endblock content %}

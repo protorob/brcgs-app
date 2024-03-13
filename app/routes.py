@@ -16,6 +16,11 @@ def reception():
     reception = []
     return render_template("reception.html", reception=reception)
 
+@bp.route("/fulfillment", methods=("GET", "POST"))
+def fulfillment():
+    fulfillment = []
+    return render_template("fulfillment.html", reception=fulfillment)
+
 @bp.route("/usermanager", methods=("GET", "POST"))
 def usermanager():
     users = []

@@ -4,6 +4,7 @@
 
 {% block content %}
         <section>
+        <h3>Show this if not_logged_in</h3>
             <div class="form-container" id="login-form">
                 <h2>Login</h2>
                 <form action="#" method="post">
@@ -11,18 +12,16 @@
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="submit" value="Login">
                 </form>
-                <a href="#" class="switch-btn" onclick="showRegisterForm()">Don't have an account? Register</a>
             </div>
-            <div class="form-container" id="register-form" style="display: none;">
-                <h2>Register</h2>
-                <form action="#" method="post">
-                    <input type="text" name="username" placeholder="Username" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-                    <input type="submit" value="Register">
-                </form>
-                <a href="#" class="switch-btn" onclick="showLoginForm()">Already have an account? Login</a>
+        <h3>Show this if logged_in</h3>
+        <p>"User manager" only if_is_admin</p>
+
+            <div style="text-align: center;">
+                <p><a href="{{ url_for('main.inprocess') }}" role="button">New "In Process" Check</a></p>
+                <p><a href="{{ url_for('main.reception') }}" role="button">New "Reception" Check</a></p>
+                <p><a href="{{ url_for('main.fulfillment') }}" role="button">New "Fulfillment" Check</a></p>
+                <p><a href="{{ url_for('main.usermanager') }}" role="button">Manage Users</a></p>
             </div>
+
         </section>
-    </main>
 {% endblock content %}
