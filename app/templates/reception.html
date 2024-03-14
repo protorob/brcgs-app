@@ -152,7 +152,7 @@
             <tbody>
                 {% for reception  in receptions %}
                 <tr>
-                    <td>{{reception.reception_date}}</td>
+                    <td>{{reception.reception_date.strftime('%Y-%m-%d')}}</td>
                     <td>{{reception.supplier_name}}</td>
                     <td>{{reception.transport_document_number}}</td>
                     <td>{{reception.received_products}}</td>

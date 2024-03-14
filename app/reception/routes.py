@@ -90,7 +90,7 @@ def export_reception_csv():
                      "Price Quantity Accepted", "Items Rejected","Received by"])
 
     for record in reception_records:
-        writer.writerow([record.reception_date, record.transport_document_number, 
+        writer.writerow([record.reception_date.strftime('%Y-%m-%d'), record.transport_document_number, 
                          record.transport_document_date, record.supplier_name, 
                          record.received_products, record.correspondence_verification, 
                          record.hygienic_transport, record.is_oliveoil, 

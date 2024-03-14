@@ -28,39 +28,25 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Full Name</th>
+                    <th>Username</th>
                     <th>E-Mail</th>
+                    <th>Admin</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                {% for user in users %}
                 <tr>
-                    <td>1</td>
-                    <td>Roberto</td>
-                    <td>info@robertobriceno.eu</td>
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.is_admin}}</td>
                     <td>
                         <button>Edit</button>
                         <button class="secondary" disabled>Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Antonio</td>
-                    <td>antonio@cordileone.it</td>
-                    <td>
-                        <button>Edit</button>
-                        <button class="secondary" disabled>Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Daniele</td>
-                    <td>danielepoddo@gmail.com</td>
-                    <td>
-                        <button>Edit</button>
-                        <button class="secondary">Delete</button>
-                    </td>
-                </tr>
+                {% endfor %}
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
