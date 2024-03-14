@@ -5,7 +5,7 @@
     <h2>Fulfillment Checks</h2>
     <details>
         <summary role="button" class="outline">New "Fulfillment Check"</summary>
-        <form method="post">
+        <form action="{{ url_for('fulfillment_bp.fulfillment') }}" method="POST">
             <fieldset>
                 <div>
                     <label for="fulfillment_date">Date:</label>
@@ -93,34 +93,23 @@
                 </tr>
             </thead>
             <tbody>
+                {% for fulfillment in fulfillments %}
                 <tr>
-                    <td>25/01/2023</td>
-                    <td>6595/565</td>
-                    <td>MOC569848</td>
-                    <td>Camarda Trasporti</td>
-                    <td>Giovanni Marsolo</td>
+                    <td>{{fulfillment.fulfillment_date}}</td>
+                    <td>{{fulfillment.fulfillment_doc_number}}</td>
+                    <td>{{fulfillment.fulfillment_lot}}</td>
+                    <td>{{fulfillment.fulfillment_transporter}}</td>
+                    <td>{{fulfillment.user.username}}</td>
                 </tr>
-                <tr>
-                    <td>25/01/2023</td>
-                    <td>6595/565</td>
-                    <td>MOC56KHJSF9848</td>
-                    <td>Camarda Trasporti</td>
-                    <td>Giovanni Marsolo</td>
-                </tr>
-                <tr>
-                    <td>25/01/2023</td>
-                    <td>6595/565</td>
-                    <td>ABCC569848</td>
-                    <td>DHL</td>
-                    <td>Antonio di Giorgio</td>
-                </tr>
+                {% endfor %}
+               
 
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
     </div>
     <div>
-        <a href="#" role="button">Download All Data (CSV)</a>
+        <a href="{{ url_for('fulfillment_bp.export_fulfillment_csv') }}" role="button">Download All Data (CSV)</a>
     </div>
 </section>
 {% endblock content %}

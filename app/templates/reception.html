@@ -5,7 +5,7 @@
     <h2>Incomming Supplies Checks</h2>
     <details>
         <summary role="button" class="outline">New "Reception Check"</summary>
-        <form method="post">
+        <form action="{{ url_for('reception_bp.reception') }}" method="POST">
             <fieldset>
                 <div>
                     <label for="reception_date">Date:</label>
@@ -121,7 +121,7 @@
                 <div>
                     <p><strong>Price/Quantity accepted:</strong></p>
                     <hr>
-                    <input type="radio" name="price_quantity_accepted" value="Yes">Yes
+                    <input type="radio" name="price_quantity_accepted" value="Yes" checked>Yes
                     <input type="radio" name="price_quantity_accepted" value="No">No
                 </div>
                 <br>
@@ -142,7 +142,6 @@
         <table class="sortable striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Date</th>
                     <th>Supplier</th>
                     <th>Trasport Doc. N°</th>
@@ -151,44 +150,22 @@
                 </tr>
             </thead>
             <tbody>
+                {% for reception  in receptions %}
                 <tr>
-                    <td>1</td>
-                    <td>25/01/2023</td>
-                    <td>FaPim sas</td>
-                    <td>TP/05328-Y</td>
-                    <td>Tappi in alluminio verdi e rossi</td>
-                    <td>Giovanni Marsolo</td>
+                    <td>{{reception.reception_date}}</td>
+                    <td>{{reception.supplier_name}}</td>
+                    <td>{{reception.transport_document_number}}</td>
+                    <td>{{reception.received_products}}</td>
+                    <td>{{reception.user.username}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>25/02/2023</td>
-                    <td>FaPim sas</td>
-                    <td>TP/05328-Y</td>
-                    <td>Tappi in alluminio verdi e rossi</td>
-                    <td>Giovanni Marsolo</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>25/03/2023</td>
-                    <td>FaPim sas</td>
-                    <td>TP/05328-Y</td>
-                    <td>Tappi in alluminio verdi e rossi</td>
-                    <td>Giovanni Marsolo</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>25/05/2023</td>
-                    <td>FaPim sas</td>
-                    <td>TP/05328-Y</td>
-                    <td>Tappi in alluminio verdi e rossi</td>
-                    <td>Giovanni Marsolo</td>
-                </tr>
+                {% endfor %}
+               
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
     </div>
     <div>
-        <a href="#" role="button">Download All Data (CSV)</a>
+        <a href="{{ url_for('reception_bp.export_reception_csv') }}" role="button">Download All Data (CSV)</a>
     </div>
 </section>
 {% endblock content %}

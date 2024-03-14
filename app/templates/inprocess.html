@@ -5,7 +5,7 @@
     <h2>In Process Checks</h2>
     <details>
         <summary role="button" class="outline">New "In Process Check"</summary>
-        <form method="post">
+        <form action="{{ url_for('inprocess_bp.inprocess') }}" method="POST">
             <fieldset>
                 <div>
                     <label for="process_date">Date:</label>
@@ -87,11 +87,11 @@
                 <div class="grid">
                     <div>
                         <label for="lot_number_compliant">Compliant</label>
-                        <input type="radio" id="lot_number_compliant" name="lot_number" value="Compliant" checked />
+                        <input type="radio" id="lot_number_compliant" name="lot_number_check" value="Compliant" checked />
                     </div>
                     <div>
                         <label for="lot_number_non_compliant">Non-Compliant</label>
-                        <input type="radio" id="lot_number_non_compliant" name="lot_number" value="Non-Compliant" />
+                        <input type="radio" id="lot_number_non_compliant" name="lot_number_check" value="Non-Compliant" />
                     </div>
                 </div>
             </fieldset>
@@ -105,11 +105,11 @@
                 <div class="grid">
                     <div>
                         <label for="start_presure_time">Start measurement time:</label>
-                        <input type="time" id="start_presure_time" name="start_presure_time" />
+                        <input type="time" id="start_presure_time" name="start_pressure_time" />
                     </div>
                     <div>
                         <label for="start_presure_value">Start measurement value:</label>
-                        <input type="number" id="start_presure_value" name="start_presure_value" />
+                        <input type="number" id="start_presure_value" name="start_pressure_value" />
                     </div>
                 </div>
             </fieldset>
@@ -121,11 +121,11 @@
                 <div class="grid">
                     <div>
                         <label for="first_presure_time">First measurement time:</label>
-                        <input type="time" id="first_presure_time" name="first_presure_time" />
+                        <input type="time" id="first_presure_time" name="first_pressure_time" />
                     </div>
                     <div>
                         <label for="first_presure_value">First measurement value:</label>
-                        <input type="number" id="first_presure_value" name="first_presure_value" />
+                        <input type="number" id="first_presure_value" name="first_pressure_value" />
                     </div>
                 </div>
             </fieldset>
@@ -137,11 +137,11 @@
                 <div class="grid">
                     <div>
                         <label for="second_presure_time">Second measurement time:</label>
-                        <input type="time" id="second_presure_time" name="second_presure_time" />
+                        <input type="time" id="second_presure_time" name="second_pressure_time" />
                     </div>
                     <div>
                         <label for="second_presure_value">Second measurement value:</label>
-                        <input type="number" id="second_presure_value" name="second_presure_value" />
+                        <input type="number" id="second_presure_value" name="second_pressure_value" />
                     </div>
                 </div>
             </fieldset>
@@ -153,11 +153,11 @@
                 <div class="grid">
                     <div>
                         <label for="final_presure_time">Final measurement time:</label>
-                        <input type="time" id="final_presure_time" name="final_presure_time" />
+                        <input type="time" id="final_presure_time" name="final_pressure_time" />
                     </div>
                     <div>
                         <label for="final_presure_value">Final measurement value:</label>
-                        <input type="number" id="final_presure_value" name="start_presure_value" />
+                        <input type="number" id="final_presure_value" name="final_pressure_value" />
                     </div>
                 </div>
             </fieldset>
@@ -187,11 +187,11 @@
                 <div class="grid">
                     <div>
                         <label for="strat_filling_cap_compliant">Compliant</label>
-                        <input type="radio" id="strat_filling_cap_compliant" name="strat_filling_cap" value="Compliant" checked />
+                        <input type="radio" id="strat_filling_cap_compliant" name="start_filling_cap_compliance" value="Compliant" checked />
                     </div>
                     <div>
                         <label for="strat_filling_cap_non_compliant">Non-Compliant</label>
-                        <input type="radio" id="strat_filling_cap_non_compliant" name="strat_filling_cap" value="Non-Compliant" />
+                        <input type="radio" id="strat_filling_cap_non_compliant" name="start_filling_cap_compliance" value="Non-Compliant" />
                     </div>
                 </div>
             </fieldset>
@@ -203,11 +203,11 @@
                 <div class="grid">
                     <div>
                         <label for="final_filling_cap_compliant">Compliant</label>
-                        <input type="radio" id="final_filling_cap_compliant" name="final_filling_cap" value="Compliant" checked />
+                        <input type="radio" id="final_filling_cap_compliant" name="final_filling_cap_compliance" value="Compliant" checked />
                     </div>
                     <div>
                         <label for="final_filling_cap_non_compliant">Non-Compliant</label>
-                        <input type="radio" id="final_filling_cap_non_compliant" name="final_filling_cap" value="Non-Compliant" />
+                        <input type="radio" id="final_filling_cap_non_compliant" name="final_filling_cap_compliance" value="Non-Compliant" />
                     </div>
                 </div>
             </fieldset>
@@ -225,11 +225,11 @@
                     </div>
                 </div>
                 <p>If there were broken bottles, please specify the quantity in the field bellow:</p>
-                <input type="number" id="bottle_breakage_qt" name="bottle_breakage_qt">
+                <input type="number" id="bottle_breakage_qt" name="bottle_breakage_qty">
             </fieldset>
             <h3>Number of units produced:</h3>
             <hr>
-            <input type="number" id="units_produced_qt" name="units_produced_qt">
+            <input type="number" id="units_produced_qt" name="units_produced_qty">
             <input type="submit" value="Confirm data inmision">
         </form>
     </details>
@@ -241,7 +241,6 @@
         <table class="sortable striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Date</th>
                     <th>Product SKU</th>
                     <th>Lot Number</th>
@@ -250,44 +249,21 @@
                 </tr>
             </thead>
             <tbody>
+                {% for record in records %}
                 <tr>
-                    <td>1</td>
-                    <td>25/01/2023</td>
-                    <td>010</td>
-                    <td>MOC569848</td>
-                    <td>58</td>
-                    <td>Giovanni Marsolo</td>
+                    <td>{{record.process_date}}</td>
+                    <td>{{record.product_sku}}</td>
+                    <td>{{record.product_lot_number}}</td>
+                    <td>{{record.units_produced_qty}}</td>
+                    <td>{{record.user.username}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>25/01/2023</td>
-                    <td>010</td>
-                    <td>MOC569848</td>
-                    <td>58</td>
-                    <td>Giovanni Marsolo</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>25/01/2023</td>
-                    <td>010</td>
-                    <td>MOC569848</td>
-                    <td>58</td>
-                    <td>Antonio di Giorgio</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>25/01/2023</td>
-                    <td>010</td>
-                    <td>MOC569848</td>
-                    <td>58</td>
-                    <td>Giovanni Marsolo</td>
-                </tr>
+                {% endfor %}
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
     </div>
     <div>
-        <a href="#" role="button">Download All Data (CSV)</a>
+        <a href="{{ url_for('inprocess_bp.export_production_csv') }}" role="button">Download All Data (CSV)</a>
     </div>
 </section>
 {% endblock content %}
